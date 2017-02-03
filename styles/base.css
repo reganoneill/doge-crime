@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+  height: 40em;
+  width: 75%;
+  border: 0.025em red dotted;
+}
+
+#google-map {
+  height: 100%;
+  max-width: 100%;
+}
+
+#yaya {
+  font-size: 12em;
+}

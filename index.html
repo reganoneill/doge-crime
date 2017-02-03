@@ -2,12 +2,35 @@
 <html>
   <head>
     <!-- styles -->
-    <title>title</title>
+    <link rel="stylesheet" href="styles/vendor/reset.css" />
+    <!-- <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css" /> -->
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/module.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- styles -->
+    <title></title>
   </head>
   <body>
-    <header></header>
-    <main></main>
+    <header>Doge Data</header>
+    <main>
+      <section id="explanation">
+        <h4>What the heck?</h4>
+        <div>This is what's happening...</div>
+        <div class="legend"></div>
+      </section>
+      <section id="google-map"></section>
+    </main>
     <footer>
+      <!-- scripts -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1eNwfyY2TM2PqwB1OMIKZNznLJ8ZT3vQ">
+      </script>
+      <script src="scripts/vendor/fontawesome-markers.min.js"></script>
+      <script src="scripts/map.js"></script>
+      <script src="scripts/models/parks.js"></script>
+      <script src="scripts/models/crime.js"></script>
       <!-- scripts -->
     </footer>
   </body>
