@@ -31,12 +31,6 @@
       var parkLocation = Park.all.map(loc => loc.location.coordinates);
       parkLocation.forEach(function(marker){
         console.log('lat:', marker[1], 'lng:', marker[0]);
-        // let markerDrop = {lat: marker[1], lng: marker[0]};
-        // let newPoint = new google.maps.Marker({
-        //    position: markerDrop,
-        //    map: map
-        // })
-        // [ [3,55],[4,133],[6,92],[4,329],... ]
         Park.addMarkerToMap(marker[1], marker[0]);
       })
   }//end getCoords
