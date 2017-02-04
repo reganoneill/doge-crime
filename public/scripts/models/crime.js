@@ -24,7 +24,7 @@
         },
         clickable: false,
         position: Crime.myLatLng,
-        animation: google.maps.Animation.DROP
+        // animation: google.maps.Animation.DROP
       });
     };//end addMarkerToMap
 
@@ -43,15 +43,9 @@
       var startYear = `${(new Date().getFullYear() - 2)}-01-01T20:00:00.000`;
       var addToQuery = `$where=at_scene_time>=%27${startYear}%27`;
       var reportedEvent = `event_clearance_group=ANIMAL%20COMPLAINTS`;
-      $.ajax({
-        // url: "https://data.seattle.gov/resource/pu5n-trf4.json?https://data.seattle.gov/resource/pu5n-trf4.json?event_clearance_group=ANIMAL%20COMPLAINTS",
-        url: `https://data.seattle.gov/resource/pu5n-trf4.json?${addToQuery}&${reportedEvent}`,
-        type: 'GET',
-        data: {
-          "$limit" : 25000,
-          "$$app_token" : ""
-        },
-        success: (function(data){
+      $.get(`https://data.seattle.gov/resource/pu5n-trf4/`)
+        .then(
+          data => {
           console.log(`Retrieved ${data.length} records of animal complaints in the dataset`);
           data.map(function(place){
                     let petCrime = new Crime(place)
@@ -59,7 +53,6 @@
                   });
           console.log('Crime.all array:', Crime.all);
         })
-      })
       .then(callback);
 
   };//end requestCrimeData

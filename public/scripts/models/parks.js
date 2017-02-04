@@ -43,22 +43,17 @@
 
 
   Park.requestParkData = function(callback) {
-    $.ajax({
-      url: "https://data.seattle.gov/resource/3c4b-gdxv.json?city_feature=Off%20Leash%20Areas",
-      type: 'GET',
-      data: {
-        "$limit" : 25000,
-        "$$app_token" : ""
-      },
-      success: (function(data){
+    $.get('https://data.seattle.gov/resource/3c4b-gdxv.json?city_feature=Off%20Leash%20Areas')
+      .then(
+        data => {
         console.log(`Retrieved ${data.length} records of off-leash areas from the dataset!`);
         data.map(function(place){
                   let dogPark = new Park(place)
                   Park.all.push(dogPark);
                 });
         console.log('Park.all array:', Park.all);
-      })
-    })
+        }
+      )
     .then(callback);
   };//end requestParkData
 
