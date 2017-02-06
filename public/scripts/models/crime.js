@@ -57,7 +57,7 @@
 
   };//end requestCrimeData
 
-  Crime.requestCrimeData(Crime.plotData);
+  // Crime.requestCrimeData(Crime.plotData);
 
   module.Crime = Crime;
 })(window);

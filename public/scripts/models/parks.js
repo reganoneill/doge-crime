@@ -36,7 +36,7 @@
   }//end getCoords
 
 
-  Park.requestParkData = function(callback) {
+  Park.requestParkData = function() {
     $.get('https://data.seattle.gov/resource/3c4b-gdxv.json?city_feature=Off%20Leash%20Areas')
       .then(
         data => {
@@ -48,9 +48,10 @@
         console.log('Park.all array:', Park.all);
         }
       )
-    .then(callback);
+    .then(Park.getCoords)
+    // .then(callback)
   };//end requestParkData
 
-  Park.requestParkData(Park.getCoords);
+  // Park.requestParkData();
   module.Park = Park;
 })(window);

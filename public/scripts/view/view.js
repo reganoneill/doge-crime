@@ -14,13 +14,13 @@
         icon: './media/svg/dog-in-front-of-a-man.svg'
       }
     };
-    for (var key in view.icons){
-      var type = view.icons[key];
-      var name = type.name;
-      var icon = type.icon;
-      var div = document.createElement('div');
-      div.innerHTML = `<img src='${icon}'>${name}`;
-      legend.appendChild(div);
-    }
+    // for (var key in view.icons){
+    //   var type = view.icons[key];
+    //   var name = type.name;
+    //   var icon = type.icon;
+    //   var div = document.createElement('div');
+    //   div.innerHTML = `<img src='${icon}'>${name}`;
+    //   legend.appendChild(div);
+    // }
 
 })(window);
