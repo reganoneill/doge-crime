@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/module.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- styles -->
     <title></title>
   </head>
@@ -18,19 +19,33 @@
       <section id="explanation">
         <h4>What the heck?</h4>
         <div>This is what's happening...</div>
-        <div class="legend"></div>
       </section>
       <section id="google-map"></section>
+      <!-- <div id="legend"><h3>Legend</h3></div> -->
+      <div class=".btn-group">
+        <button type="button" class="btn btn-info">
+          show/hide parks
+        </button>
+        <button type="button" class="btn btn-info">
+          show/hide crimes
+        </button>
+        <button type="button" class="btn btn-info">
+          about/info
+        </button>
+      </div>
     </main>
     <footer>
+      <p>Icon made by <a href="http://www.freepik.com/">Freepik</a> from www.flaticon.com</p>
       <!-- scripts -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1eNwfyY2TM2PqwB1OMIKZNznLJ8ZT3vQ">
       </script>
       <script src="scripts/vendor/fontawesome-markers.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <script src="scripts/map.js"></script>
       <script src="scripts/models/parks.js"></script>
       <script src="scripts/models/crime.js"></script>
+      <script src="scripts/view/view.js"></script>
       <!-- scripts -->
     </footer>
   </body>
