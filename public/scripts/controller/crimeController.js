@@ -3,9 +3,20 @@
 
 
   const crimeController = {};
-  crimeController.index = () => {
-      Crime.requestCrimeData(Crime.plotData);
+
+  crimeController.loadAll = (ctx, next) => {
+    Crime.requestCrimeData();
   }
+
+  page('/reports', crimeController.loadAll);
+
+
+  // $(function(){
+    $('.crimeButton').on('click', function(e){
+      e.preventDefault();
+      page(`/reports`);
+    })
+  // })
 
   module.crimeController = crimeController;
 })(window);

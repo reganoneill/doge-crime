@@ -34,16 +34,18 @@
       console.log(crimeSpots);
       crimeSpots.forEach(function(spot){
         Crime.addMarkerToMap(spot[0], spot[1]);
-        console.log('butt');
       })
     };
 
 // https://data.seattle.gov/resource/pu5n-trf4.json?$where=at_scene_time%3E=%272016-01-12T20:00:00.000%27&event_clearance_group=ANIMAL%20COMPLAINTS
-    Crime.requestCrimeData = function(callback) {
+    Crime.requestCrimeData = function() {
       var startYear = `${(new Date().getFullYear() - 2)}-01-01T20:00:00.000`;
       var addToQuery = `$where=at_scene_time>=%27${startYear}%27`;
       var reportedEvent = `event_clearance_group=ANIMAL%20COMPLAINTS`;
-      $.get(`https://data.seattle.gov/resource/pu5n-trf4/`)
+      // $.get(`https://data.seattle.gov/resource/pu5n-trf4/`)
+      $.get(`/seattle/resource/pu5n-trf4.json?${addToQuery}&${reportedEvent}`
+)
+
         .then(
           data => {
           console.log(`Retrieved ${data.length} records of animal complaints in the dataset`);
@@ -53,7 +55,7 @@
                   });
           console.log('Crime.all array:', Crime.all);
         })
-      .then(callback);
+      .then(Crime.plotData);
 
   };//end requestCrimeData
 
