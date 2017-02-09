@@ -7,33 +7,50 @@
   }
 
   Park.all = [];
-  //grabbed this from a tutorial - trying it out
-  Park.addMarkerToMap = function(lat, lng){
 
-    var dogIcon = new google.maps.MarkerImage(
-      "./media/svg/dog-in-front-of-a-man.svg",
-      null, /* size is determined at runtime */
-      null, /* origin is 0,0 */
-      null, /* anchor is bottom center of the scaled image */
-      new google.maps.Size(52, 48)
-  );
-    var myLatLng = new google.maps.LatLng(lat, lng);
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: googs.map,
-      icon: dogIcon,
-      animation: google.maps.Animation.DROP,
-    });
-    // marker.setMap(map);
-  };//end addMarkerToMap
+  //new method to generate info boxes for each data marker
+  Park.getInfo = function(){
 
-  Park.getCoords = function(){
-      var parkLocation = Park.all.map(loc => loc.location.coordinates);
-      parkLocation.forEach(function(marker){
-        console.log('lat:', marker[1], 'lng:', marker[0]);
-        Park.addMarkerToMap(marker[1], marker[0]);
-      })
-  }//end getCoords
+    //loop through Park.all array (which has been populated by Park.requestParkData)
+    //forEach object in the array, we need to create A) a string which grabs the ADDRESS, COMMON NAME, AND WEBSITE
+    //then pass that string into B) a new infowindow  C) a new Marker
+    // D) an event listener on the marker which shows the infowindow when clicked.
+
+    Park.all.forEach(function(park){
+      let myLatyLngy = new google.maps.LatLng(park.location.coordinates[1], park.location.coordinates[0]);
+      let stringBox = `<div class="infoBox">
+                        <p>${park.common_name}</p>
+                        <p>${park.address}</p>
+                        <p>${park.website}</p>
+                      </div>`;
+      let infowindow = new google.maps.InfoWindow({
+        content: stringBox
+      });
+
+      let dogIcon = new google.maps.MarkerImage(
+        "./media/svg/dog-in-front-of-a-man.svg",
+        null, /* size is determined at runtime */
+        null, /* origin is 0,0 */
+        null, /* anchor is bottom center of the scaled image */
+        new google.maps.Size(52, 48)
+      );
+
+      let markin = new google.maps.Marker({
+        position: myLatyLngy,
+        map: googs.map,
+        icon: dogIcon,
+        animation: google.maps.Animation.DROP,
+      });
+
+      markin.addListener('click', function() {
+         infowindow.open(googs.map, markin);
+       });
+
+    })
+
+  }//end getInfo
+
+
 
 
   Park.requestParkData = function() {
@@ -48,10 +65,9 @@
         console.log('Park.all array:', Park.all);
         }
       )
-    .then(Park.getCoords)
+    .then(Park.getInfo)
     // .then(callback)
   };//end requestParkData
 
-  // Park.requestParkData();
   module.Park = Park;
 })(window);

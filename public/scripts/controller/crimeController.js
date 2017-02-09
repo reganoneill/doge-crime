@@ -4,19 +4,16 @@
 
   const crimeController = {};
 
-  crimeController.loadAll = (ctx, next) => {
+  crimeController.loadAll = () => {
     Crime.requestCrimeData();
   }
 
-  page('/reports', crimeController.loadAll);
-
-
-  // $(function(){
-    $('.crimeButton').on('click', function(e){
-      e.preventDefault();
-      page(`/reports`);
-    })
-  // })
+  // // $(function(){
+  //   $('.crimeButton').on('click', function(e){
+  //     e.preventDefault();
+  //     page(`/reports`);
+  //   })
+  // // })
 
   module.crimeController = crimeController;
 })(window);
